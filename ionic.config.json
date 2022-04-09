@@ -1,0 +1,7 @@
+{
+  "name": "ionic-venda-carros",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

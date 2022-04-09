@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Cadastro de Carros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [formGroup]="form">
+  <ion-item>
+    <ion-label position="stacked">Nome: </ion-label>
+    <ion-input type="text" formControlName="nome"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Preço: </ion-label>
+    <ion-input type="number" formControlName="preco"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Ano: </ion-label>
+    <ion-input type="number" formControlName="ano"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Tipo: </ion-label>
+    <ion-select formControlName="tipo">
+      <ion-select-option value="HATCH">Hatch</ion-select-option>
+      <ion-select-option value="SEDAN">Sedan</ion-select-option>
+      <ion-select-option value="SUV">SUV</ion-select-option>
+      <ion-select-option value="PICAPE">Picape</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Foto (URL): </ion-label>
+    <ion-input type="url" formControlName="foto"></ion-input>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="salvar()" [disabled]="!form.valid">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
