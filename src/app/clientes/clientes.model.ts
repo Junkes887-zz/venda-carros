@@ -2,7 +2,7 @@ export interface Cliente {
   id: number;
   nome: string;
   sexo: Sexo;
-  cpf: string;
+  cpf_cnpj: string;
   telefone: string;
 }
 
