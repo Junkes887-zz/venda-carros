@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Cadastro de Carros</ion-title>
+    <ion-title>Cadastro de Vendedores</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,23 +15,9 @@
   </ion-item>
 
   <ion-item>
-    <ion-label position="stacked">Preço: </ion-label>
-    <ion-input type="number" formControlName="preco"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Ano: </ion-label>
-    <ion-input type="number" formControlName="ano"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Tipo: </ion-label>
-    <ion-select formControlName="tipo">
-      <ion-select-option value="HATCH">Hatch</ion-select-option>
-      <ion-select-option value="SEDAN">Sedan</ion-select-option>
-      <ion-select-option value="SUV">SUV</ion-select-option>
-      <ion-select-option value="PICAPE">Picape</ion-select-option>
-    </ion-select>
+    <ion-label position="stacked">CPF: </ion-label>
+    <ion-input type="tel" name="cpf" pattern=".{10,11}[0-9]+$" maxlength="11" [(ngModel)]="user.cpf" #cpf="ngModel" (blur)="user.cpf = format(user.cpf)" required></ion-input>
+    <!-- <ion-input type="text" formControlName="cpf"></ion-input> -->
   </ion-item>
 
   <ion-item>

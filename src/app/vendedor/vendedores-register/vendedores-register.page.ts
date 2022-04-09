@@ -8,15 +8,14 @@ import {
   ViewWillLeave,
 } from '@ionic/angular';
 import { MessageService } from '../../services/message.service';
-import { CarrosApiService } from '../carros-api.service';
-import { Tipo } from '../carros.model';
+import { VendedoresApiService } from '../vendedores-api.service';
 
 @Component({
-  selector: 'app-carros-register',
-  templateUrl: './carros-register.page.html',
-  styleUrls: ['./carros-register.page.scss'],
+  selector: 'app-vendedores-register',
+  templateUrl: './vendedores-register.page.html',
+  styleUrls: ['./vendedores-register.page.scss'],
 })
-export class CarrosRegisterPage
+export class VendedoresRegisterPage
   implements
     OnInit,
     OnDestroy,
@@ -29,20 +28,18 @@ export class CarrosRegisterPage
 
   constructor(
     private formBuilder: FormBuilder,
-    private carrosApiService: CarrosApiService,
+    private vendedoresApiService: VendedoresApiService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService
   ) {}
 
   ngOnInit() {
-    console.log('CarrosRegisterPage ngOnInit');
+    console.log('VendedoresRegisterPage ngOnInit');
     this.form = this.formBuilder.group({
       id: [''],
       nome: ['', [Validators.required, Validators.minLength(3)]],
-      preco: ['', Validators.required],
-      ano: [''],
-      tipo: [Tipo.HATCH, Validators.required],
+      cpf: ['', Validators.required, Validators.minLength(11)],
       foto: ['', Validators.required],
     });
 
@@ -53,46 +50,46 @@ export class CarrosRegisterPage
   }
 
   findById(id: number) {
-    this.carrosApiService.findById(id).subscribe(
-      (carro) => {
-        if (carro) {
+    this.vendedoresApiService.findById(id).subscribe(
+      (vendedor) => {
+        if (vendedor) {
           this.form.patchValue({
-            ...carro,
+            ...vendedor,
           });
         }
       },
-      () => this.messageService.error(`Erro ao buscar o carro com código ${id}`, () => this.findById(id))
+      () => this.messageService.error(`Erro ao buscar o vendedor com código ${id}`, () => this.findById(id))
     );
   }
 
   ionViewWillEnter(): void {
-    console.log('CarrosRegisterPage ionViewWillEnter');
+    console.log('VendedoresRegisterPage ionViewWillEnter');
   }
 
   ionViewDidEnter(): void {
-    console.log('CarrosRegisterPage ionViewDidEnter');
+    console.log('VendedoresRegisterPage ionViewDidEnter');
   }
 
   ionViewWillLeave(): void {
-    console.log('CarrosRegisterPage ionViewWillLeave');
+    console.log('VendedoresRegisterPage ionViewWillLeave');
   }
 
   ionViewDidLeave(): void {
-    console.log('CarrosRegisterPage ionViewDidLeave');
+    console.log('VendedoresRegisterPage ionViewDidLeave');
   }
 
   ngOnDestroy(): void {
-    console.log('CarrosRegisterPage ngOnDestroy');
+    console.log('VendedoresRegisterPage ngOnDestroy');
   }
 
   salvar() {
     // const nome = this.form.value.nome;
     const { nome } = this.form.value;
 
-    this.carrosApiService.save(this.form.value).subscribe(
-      () => this.router.navigate(['carros-list']),
+    this.vendedoresApiService.save(this.form.value).subscribe(
+      () => this.router.navigate(['vendedores-list']),
       () =>
-        this.messageService.error(`Erro ao salvar o carro ${nome}`, () =>
+        this.messageService.error(`Erro ao salvar o vendedor ${nome}`, () =>
           this.salvar()
         )
     );
