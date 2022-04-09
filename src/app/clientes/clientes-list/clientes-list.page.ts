@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AlertController,
-  ToastController,
   ViewDidEnter,
   ViewDidLeave,
   ViewWillEnter,
