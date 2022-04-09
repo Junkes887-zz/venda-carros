@@ -26,6 +26,6 @@ export class ClientesApiService {
     if(cliente.id) {
       return this.httpClient.put<Cliente>(`${environment.apiUrl}/clientes/${cliente.id}`, cliente);
     }
-    return this.httpClient.post<Cliente>(`${environment.apiUrl}/v`, cliente);
+    return this.httpClient.post<Cliente>(`${environment.apiUrl}/clientes`, cliente);
   }
 }

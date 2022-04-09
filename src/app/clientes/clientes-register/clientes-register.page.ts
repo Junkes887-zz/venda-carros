@@ -41,7 +41,7 @@ export class ClientesRegisterPage
       id: [''],
       nome: ['', [Validators.required]],
       sexo: [Sexo.MASCULINO, Validators.required],
-      cpf: ['', [Validators.required, Validators.minLength(11)]],
+      cpf_cnpj: ['', [Validators.required, Validators.minLength(14)]],
       telefone: ['', Validators.required],
     });
 
@@ -88,7 +88,10 @@ export class ClientesRegisterPage
     const { nome } = this.form.value;
 
     this.clientesApiService.save(this.form.value).subscribe(
-      () => this.router.navigate(['clientes-list']),
+      () => {
+        this.form.reset();
+        this.router.navigate(['clientes-list'])
+      },
       () =>
         this.messageService.error(`Erro ao salvar o cliente ${nome}`, () =>
           this.salvar()

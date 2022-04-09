@@ -11,8 +11,6 @@ import { MessageService } from 'src/app/services/message.service';
 import { ClientesApiService } from '../clientes-api.service';
 import { Cliente } from '../clientes.model';
 
-import { ClientesService } from '../clientes.service';
-
 @Component({
   selector: 'app-clientes-list',
   templateUrl: './clientes-list.page.html',

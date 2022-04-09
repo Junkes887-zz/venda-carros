@@ -10,6 +10,8 @@ export class AppComponent {
     { title: 'Cadastro de Carros', url: '/carros-register', icon: 'duplicate' },
     { title: 'Lista de Vendedores', url: '/vendedores-list', icon: 'duplicate' },
     { title: 'Cadastro de Vendedores', url: '/vendedores-register', icon: 'duplicate' },
+    { title: 'Lista de Clientes', url: '/clientes-list', icon: 'duplicate' },
+    { title: 'Cadastro de Clientes', url: '/clientes-register', icon: 'duplicate' },
   ];
 
   constructor() {}

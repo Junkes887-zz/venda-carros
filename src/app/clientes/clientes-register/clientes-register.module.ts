@@ -7,9 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { ClientesRegisterPageRoutingModule } from './clientes-register-routing.module';
 
 import { ClientesRegisterPage } from './clientes-register.page';
+import { BrMaskerModule } from 'br-mask';
 
 @NgModule({
   imports: [
+    BrMaskerModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
