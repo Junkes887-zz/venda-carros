@@ -16,8 +16,7 @@
 
   <ion-item>
     <ion-label position="stacked">CPF: </ion-label>
-    <ion-input type="tel" name="cpf" pattern=".{10,11}[0-9]+$" maxlength="11" [(ngModel)]="user.cpf" #cpf="ngModel" (blur)="user.cpf = format(user.cpf)" required></ion-input>
-    <!-- <ion-input type="text" formControlName="cpf"></ion-input> -->
+    <ion-input type="text" formControlName="cpf" [brmasker]="{mask:'000.000.000-00', len:14}"></ion-input>
   </ion-item>
 
   <ion-item>
