@@ -1,59 +1,9 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-
-    <ion-title>Lista de Carros</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-list>
-    <ion-list-header>Carros disponíveis</ion-list-header>
-
-    <ion-item-sliding *ngFor="let carro of carros">
-
-      <ion-item-options side="start">
-        <ion-item-option color="secondary" [routerLink]="['/carros-register', carro.id]">
-          <ion-icon name="pencil" slot="icon-only"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-
-      <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="confirmRemove(carro)">
-          <ion-icon name="trash" slot="icon-only"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-
-      <ion-item>
-        <ion-avatar slot="start">
-          <img [src]="carro.foto" />
-        </ion-avatar>
-        <ion-label>
-          <h2>{{carro.nome}}</h2>
-          <h3>Tipo: <strong>{{carro.tipo | tipo}}</strong></h3>
-          <h3>
-            Preço:
-            <ion-text color="danger">
-              <strong> {{carro.preco | currency : 'R$ '}} </strong>
-            </ion-text>
-          </h3>
-          <small>
-            Ano:
-            <ion-text color="medium">
-              {{carro.ano}}
-            </ion-text>
-          </small>
-        </ion-label>
-      </ion-item>
-
-    </ion-item-sliding>
-  </ion-list>
-
-  <ion-fab vertical="bottom" horizontal="end">
-    <ion-fab-button [routerLink]="['/carros-register']">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    <ion-item>
+      <ion-label fixed>CPF/CNPJ</ion-label>
+      <ion-input type="password" [(ngModel)]="documento"></ion-input>
+    </ion-item>
+  <div padding>
+    <button ion-button color="secondary" (click)="login()">Login</button>
+  </div>
 </ion-content>
