@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Compras
+      <ion-spinner class="ion-margin-start" *ngIf="loading"></ion-spinner>
+    </ion-list-header>
+
+    <ion-item *ngFor="let compra of compras">
+      <ion-label>{{compra.id}}</ion-label>
+      <ion-label>{{compra.nomeVendedor}}</ion-label>
+      <ion-label>{{compra.nomeCarro}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="add()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
