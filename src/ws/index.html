@@ -63,9 +63,10 @@
     <script>
         $(function () {
             var socket = io();
+            let vendedor = document.URL.split('=')[1];
 
             $('form').submit(function () {
-                socket.emit('chat message', $('#m').val());
+                socket.emit('chat message', vendedor + ': ' + $('#m').val());
                 $('#m').val('');
                 return false;
             });

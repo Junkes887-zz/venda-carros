@@ -12,14 +12,8 @@ class App {
     }
     routes() {
         this.app = express();
-        this.app.route("/").get((req, res) => {
+        this.app.route("*").get((req, res) => {
             res.sendFile(__dirname + '/index.html');
-        });
-        this.app.route("/cliente").get((req, res) => {
-            res.sendFile(__dirname + '/cliente.html');
-        });
-        this.app.route("/vendedor").get((req, res) => {
-            res.sendFile(__dirname + '/vendedor.html');
         });
     }
     sockets() {
@@ -28,7 +22,7 @@ class App {
     }
     listen() {
         this.io.on('connection', (socket) => {
-            console.log('a user connected');
+            console.log(socket.client)
             socket.on('chat message', (m) => {
                 this.io.emit('chat message', m);
             });
