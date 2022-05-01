@@ -22,7 +22,6 @@ class App {
     }
     listen() {
         this.io.on('connection', (socket) => {
-            console.log(socket.client)
             socket.on('chat message', (m) => {
                 this.io.emit('chat message', m);
             });

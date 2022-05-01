@@ -74,7 +74,10 @@ export class LoginPage
         vendedores.forEach(vendedor => {
           if(vendedor.cpf == documento) {
             localStorage.setItem("login", vendedor.cpf);
+            window.open(`http://localhost:8100/funcionario_nome=${encodeURI(vendedor.nome)}`)
+            this.ngOnInit()
           }
+          this.messageService.error('Funcionario não encotrado', () =>  {})
         });
       },
       () =>
@@ -84,5 +87,6 @@ export class LoginPage
 
   logout() {
     localStorage.setItem("login", null);
+    this.ngOnInit()
   }
 }

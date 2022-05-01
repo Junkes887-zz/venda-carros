@@ -64,7 +64,7 @@ export class CarrosListPage
 
   listCarros() {
     this.carrosApiService.getCarros().subscribe(
-      (carros) => (this.carros = carros),
+      (carros) => (this.carros = carros.filter((carro) => carro.vendido == false)),
       () =>
         this.messageService.error('Erro ao buscar a lista de carros', () => this.listCarros())
     );

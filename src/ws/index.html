@@ -63,7 +63,7 @@
     <script>
         $(function () {
             var socket = io();
-            let vendedor = document.URL.split('=')[1];
+            let vendedor = decodeURI(document.URL).split('=')[1];
 
             $('form').submit(function () {
                 socket.emit('chat message', vendedor + ': ' + $('#m').val());

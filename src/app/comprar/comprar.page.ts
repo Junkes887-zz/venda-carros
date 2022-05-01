@@ -42,6 +42,11 @@ export class ComprarPage implements OnInit {
     });
   }
 
+  atualizaCarro(carro: Carro) {
+    carro.vendido = true;
+    this.carrosApiService.save(carro).subscribe();
+  }
+
   async add() {
     const alert = await this.alertController.create({
       header: 'Realizar compra',
@@ -79,7 +84,10 @@ export class ComprarPage implements OnInit {
             value.nomeCarro = carro.nome;
             value.nomeVendedor = vendedor.nome;
 
-            this.comprarService.save(value).subscribe(() => this.loadComprar());
+            this.comprarService.save(value).subscribe(() => {
+              this.loadComprar();
+              this.atualizaCarro(carro);
+            });
           }
         },
         {

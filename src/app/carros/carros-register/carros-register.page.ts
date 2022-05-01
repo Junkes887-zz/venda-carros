@@ -44,6 +44,7 @@ export class CarrosRegisterPage
       ano: [''],
       tipo: [Tipo.HATCH, Validators.required],
       foto: ['', Validators.required],
+      vendido: false,
     });
 
     const id = +this.activatedRoute.snapshot.params.id;

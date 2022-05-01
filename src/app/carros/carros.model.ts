@@ -5,6 +5,7 @@ export interface Carro {
   preco: number;
   ano: number;
   foto: string;
+  vendido: boolean;
 }
 
 export enum Tipo {
