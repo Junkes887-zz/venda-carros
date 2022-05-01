@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {
   AlertController,
   ToastController,
@@ -24,10 +25,11 @@ export class LoginPage
     ViewWillLeave,
     ViewDidLeave
 {
-  documento: string
+  form: FormGroup;
+  logado: boolean;
 
   constructor(
-    private alertController: AlertController,
+    private formBuilder: FormBuilder,
     private messageService: MessageService,
     private vendedoresApiService: VendedoresApiService,
   ) {
@@ -35,6 +37,14 @@ export class LoginPage
 
   ngOnInit() {
     console.log('LoginPage ngOnInit');
+    this.form = this.formBuilder.group({
+      documento: '',
+    });
+
+    const login = localStorage.getItem("login");
+
+    this.logado = login != "null";
+    
   }
 
   ionViewWillEnter(): void {
@@ -59,13 +69,20 @@ export class LoginPage
 
   login() {
     this.vendedoresApiService.getVendedores().subscribe(
-      (vendedores) => ((vendedores)=> {
+      (vendedores) => {
+        const {documento} = this.form.value;
         vendedores.forEach(vendedor => {
-          vendedor.cpf == this.documento;
+          if(vendedor.cpf == documento) {
+            localStorage.setItem("login", vendedor.cpf);
+          }
         });
-      }),
+      },
       () =>
-        this.messageService.error('Erro ao buscar a lista de vendedores', () => this.login())
+        this.messageService.error('Erro ao buscar a lista de vendedores', () =>  this.login())
     );
+  }
+
+  logout() {
+    localStorage.setItem("login", null);
   }
 }

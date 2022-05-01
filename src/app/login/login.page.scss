@@ -3,6 +3,20 @@ ion-content {
     --padding-start: 10%;
     --padding-end: 10%;
 }
+
+button {   
+    font-size: 30px;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding-left: 19px;
+    padding-right: 19px; 
+    background-color: #04AA6D;
+    color: #ffffff;
+    border-color: #04AA6D;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+}
  
 .input-group {
     background: #fff;
