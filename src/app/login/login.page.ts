@@ -68,7 +68,7 @@ export class LoginPage
   }
 
   login() {
-    this.vendedoresApiService.getVendedores().subscribe(
+    this.vendedoresApiService.getVendedores("").subscribe(
       (vendedores) => {
         const {documento} = this.form.value;
         vendedores.forEach(vendedor => {

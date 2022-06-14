@@ -3,4 +3,6 @@ export interface Vendedor {
   nome: string;
   cpf: string;
   foto: string;
+  telefone: string;
+  endereco: string;
 }

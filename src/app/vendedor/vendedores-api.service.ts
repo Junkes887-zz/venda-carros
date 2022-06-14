@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment';
 export class VendedoresApiService {
   constructor(private httpClient: HttpClient) {}
 
-  getVendedores(): Observable<Vendedor[]> {
-    return this.httpClient.get<Vendedor[]>(`${environment.apiUrl}/vendedores`);
+  getVendedores(nome): Observable<Vendedor[]> {
+    return this.httpClient.get<Vendedor[]>(`${environment.apiUrl}/vendedores/search?nome=${nome}`);
   }
 
   remove(id: number): Observable<void> {
@@ -23,9 +23,12 @@ export class VendedoresApiService {
   }
 
   save(vendedor: Vendedor): Observable<Vendedor> {
+    vendedor.cpf = vendedor.cpf.replace(/\D/g, '');
+
     if(vendedor.id) {
       return this.httpClient.put<Vendedor>(`${environment.apiUrl}/vendedores/${vendedor.id}`, vendedor);
     }
+    vendedor.id = null;
     return this.httpClient.post<Vendedor>(`${environment.apiUrl}/vendedores`, vendedor);
   }
 }

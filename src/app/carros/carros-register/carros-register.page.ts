@@ -42,7 +42,7 @@ export class CarrosRegisterPage
       nome: ['', [Validators.required, Validators.minLength(3)]],
       preco: ['', Validators.required],
       ano: [''],
-      tipo: [Tipo.HATCH, Validators.required],
+      tipoCarro: [Tipo.HATCH, Validators.required],
       foto: ['', Validators.required],
       vendido: false,
     });

@@ -41,6 +41,8 @@ export class VendedoresRegisterPage
       nome: ['', [Validators.required, Validators.minLength(3)]],
       cpf: ['', Validators.required],
       foto: ['', Validators.required],
+      telefone: ['', Validators.required],
+      endereco: ['', Validators.required],
     });
 
     const id = +this.activatedRoute.snapshot.params.id;
@@ -83,7 +85,6 @@ export class VendedoresRegisterPage
   }
 
   salvar() {
-    // const nome = this.form.value.nome;
     const { nome } = this.form.value;
 
     this.vendedoresApiService.save(this.form.value).subscribe(

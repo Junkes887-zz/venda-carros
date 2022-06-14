@@ -42,7 +42,7 @@ export class CarrosListPage
   }
 
   ionViewWillEnter(): void {
-    this.listCarros();
+    this.listCarros("");
     console.log('CarrosListPage ionViewWillEnter');
   }
 
@@ -62,12 +62,16 @@ export class CarrosListPage
     console.log('CarrosListPage ngOnDestroy');
   }
 
-  listCarros() {
-    this.carrosApiService.getCarros().subscribe(
+  listCarros(nome) {
+    this.carrosApiService.getCarros(nome).subscribe(
       (carros) => (this.carros = carros.filter((carro) => carro.vendido == false)),
       () =>
-        this.messageService.error('Erro ao buscar a lista de carros', () => this.listCarros())
+        this.messageService.error('Erro ao buscar a lista de carros', () => this.listCarros(nome))
     );
+  }
+
+  onChangeFiltro(nome) : void {
+    this.listCarros(nome);    
   }
 
   confirmRemove(carro: Carro) {
@@ -91,10 +95,7 @@ export class CarrosListPage
   remove(carro: Carro) {
     this.carrosApiService.remove(carro.id).subscribe(
       () => {
-        // Alternativa 1
-        this.listCarros();
-        // Alternativa 2
-        // this.carros = this.carros.filter(g => g.id !== carro.id);
+        this.listCarros("");
       },
       () => this.messageService.error('Erro ao excluir o carro', () => this.remove(carro))
     );

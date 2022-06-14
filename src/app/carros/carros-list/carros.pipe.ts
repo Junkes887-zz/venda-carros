@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Tipo } from '../carros.model';
 
 @Pipe({
-  name: 'tipo'
+  name: 'tipoCarro'
 })
 export class TipoPipe implements PipeTransform {
 

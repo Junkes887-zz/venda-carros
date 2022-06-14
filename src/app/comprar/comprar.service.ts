@@ -11,10 +11,10 @@ export class ComprarService {
   constructor(private httpClient: HttpClient) {}
 
   findAll(): Observable<Compra[]> {
-    return this.httpClient.get<Compra[]>(`${environment.apiUrl}/comprar`);
+    return this.httpClient.get<Compra[]>(`${environment.apiUrl}/compras`);
   }
 
   save(platform: Compra) {
-    return this.httpClient.post(`${environment.apiUrl}/comprar`, platform);
+    return this.httpClient.post(`${environment.apiUrl}/compras`, platform);
   }
 }

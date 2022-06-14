@@ -6,6 +6,9 @@
 
     <ion-title>Lista de Vendedores</ion-title>
   </ion-toolbar>
+
+  <ion-input type="text" placeholder="Filtrar por nome" (change)='onChangeFiltro($event.target.value)'></ion-input>
+
 </ion-header>
 
 <ion-content>

@@ -1,7 +1,7 @@
 export interface Carro {
   id: number;
   nome: string;
-  tipo: Tipo;
+  tipoCarro: Tipo;
   preco: number;
   ano: number;
   foto: string;

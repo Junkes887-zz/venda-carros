@@ -42,7 +42,7 @@ export class VendedoresListPage
   }
 
   ionViewWillEnter(): void {
-    this.listVendedores();
+    this.listVendedores("");
     console.log('VendedoresListPage ionViewWillEnter');
   }
 
@@ -62,12 +62,16 @@ export class VendedoresListPage
     console.log('VendedoresListPage ngOnDestroy');
   }
 
-  listVendedores() {
-    this.vendedoresApiService.getVendedores().subscribe(
+  listVendedores(nome) {
+    this.vendedoresApiService.getVendedores(nome).subscribe(
       (vendedores) => (this.vendedores = vendedores),
       () =>
-        this.messageService.error('Erro ao buscar a lista de vendedores', () => this.listVendedores())
+        this.messageService.error('Erro ao buscar a lista de vendedores', () => this.listVendedores(nome))
     );
+  }
+
+  onChangeFiltro(nome) : void {
+    this.listVendedores(nome);    
   }
 
   confirmRemove(vendedor: Vendedor) {
@@ -91,10 +95,7 @@ export class VendedoresListPage
   remove(vendedor: Vendedor) {
     this.vendedoresApiService.remove(vendedor.id).subscribe(
       () => {
-        // Alternativa 1
-        this.listVendedores();
-        // Alternativa 2
-        // this.vendedores = this.vendedores.filter(g => g.id !== vendedor.id);
+        this.listVendedores("");
       },
       () => this.messageService.error('Erro ao excluir o vendedor', () => this.remove(vendedor))
     );

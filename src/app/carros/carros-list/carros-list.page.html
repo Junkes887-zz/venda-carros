@@ -6,6 +6,9 @@
 
     <ion-title>Lista de Carros</ion-title>
   </ion-toolbar>
+
+  <ion-input type="text" placeholder="Filtrar por nome" (change)='onChangeFiltro($event.target.value)'></ion-input>
+  
 </ion-header>
 
 <ion-content>
@@ -32,7 +35,7 @@
         </ion-avatar>
         <ion-label>
           <h2>{{carro.nome}}</h2>
-          <h3>Tipo: <strong>{{carro.tipo | tipo}}</strong></h3>
+          <h3>Tipo: <strong>{{carro.tipoCarro | tipoCarro}}</strong></h3>
           <h3>
             Preço:
             <ion-text color="danger">

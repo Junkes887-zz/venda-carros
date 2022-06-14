@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment';
 export class CarrosApiService {
   constructor(private httpClient: HttpClient) {}
 
-  getCarros(): Observable<Carro[]> {
-    return this.httpClient.get<Carro[]>(`${environment.apiUrl}/carros`);
+  getCarros(nome): Observable<Carro[]> {
+    return this.httpClient.get<Carro[]>(`${environment.apiUrl}/carros/search?nome=${nome}`);
   }
 
   remove(id: number): Observable<void> {
@@ -26,6 +26,8 @@ export class CarrosApiService {
     if(carro.id) {
       return this.httpClient.put<Carro>(`${environment.apiUrl}/carros/${carro.id}`, carro);
     }
+
+    carro.id = null;
     return this.httpClient.post<Carro>(`${environment.apiUrl}/carros`, carro);
   }
 }

@@ -20,6 +20,16 @@
   </ion-item>
 
   <ion-item>
+    <ion-label position="stacked">Telefone: </ion-label>
+    <ion-input type="tel" formControlName="telefone" [brmasker]="{phone: true}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Endereço: </ion-label>
+    <ion-input type="text" formControlName="endereco"></ion-input>
+  </ion-item>
+
+  <ion-item>
     <ion-label position="stacked">Foto (URL): </ion-label>
     <ion-input type="url" formControlName="foto"></ion-input>
   </ion-item>

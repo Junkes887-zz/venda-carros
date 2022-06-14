@@ -30,8 +30,8 @@ export class ComprarPage implements OnInit {
   ngOnInit() {
     this.loadComprar();
 
-    this.carrosApiService.getCarros().subscribe((carros) => this.carros = carros);
-    this.vendedoresApiService.getVendedores().subscribe((vendedores) => this.vendedores = vendedores);
+    this.carrosApiService.getCarros("").subscribe((carros) => this.carros = carros);
+    this.vendedoresApiService.getVendedores("").subscribe((vendedores) => this.vendedores = vendedores);
   }
 
   loadComprar() {
