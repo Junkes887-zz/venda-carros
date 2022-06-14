@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Cadastro de Compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [formGroup]="form">
+  
+  <ion-item>
+    <ion-label>Carros</ion-label>
+    <ion-select formControlName="carro" value="carro">
+      <ion-label position="stacked">Carro:</ion-label>
+      <ion-select-option *ngFor="let carro of carros" [value]="carro" >{{carro.nome}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Vendedor</ion-label>
+    <ion-select formControlName="vendedor">
+      <ion-label position="stacked">Vendedor:</ion-label>
+      <ion-select-option *ngFor="let vendedor of vendedores" [value]="vendedor" >{{vendedor.nome}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Data da compra: </ion-label>
+    <ion-input type="date" formControlName="dataCompra"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Forma de pagamento: </ion-label>
+    <ion-select formControlName="formaPagamento">
+      <ion-select-option value="A_VISTA">A vista</ion-select-option>
+      <ion-select-option value="A_PRAZO">A prazo</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Desconto: </ion-label>
+    <ion-input type="number" formControlName="desconto"></ion-input>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="salvar()" [disabled]="!form.valid">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

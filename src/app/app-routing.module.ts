@@ -28,8 +28,12 @@ const routes: Routes = [
     loadChildren: () => import('./vendedor/vendedores-register/vendedores-register.module').then( m => m.VendedoresRegisterPageModule)
   },
   {
-    path: 'comprar',
-    loadChildren: () => import('./comprar/comprar.module').then( m => m.ComprarPageModule)
+    path: 'compras-list',
+    loadChildren: () => import('./compras/compras-list/compras-list.module').then( m => m.ComprasListPageModule)
+  },
+  {
+    path: 'compras-register',
+    loadChildren: () => import('./compras/compras-register/compras-register.module').then( m => m.ComprasRegisterPageModule)
   },
 ];
 
