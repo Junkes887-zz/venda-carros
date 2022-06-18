@@ -97,7 +97,7 @@ export class CarrosListPage
       () => {
         this.listCarros("");
       },
-      () => this.messageService.error('Erro ao excluir o carro', () => this.remove(carro))
+      (err) => this.messageService.error(`Erro ao excluir o carro: ${err.error.erro}`, () => this.remove(carro))
     );
   }
 

@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'compras-register',
     loadChildren: () => import('./compras/compras-register/compras-register.module').then( m => m.ComprasRegisterPageModule)
   },
+  {
+    path: 'dashboard-compras',
+    loadChildren: () => import('./dashboard-compras/dashboard-routing.module').then( d => d.DashboardPageRoutingModule)
+  },
 ];
 
 @NgModule({

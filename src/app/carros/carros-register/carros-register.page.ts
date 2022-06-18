@@ -92,8 +92,8 @@ export class CarrosRegisterPage
 
     this.carrosApiService.save(this.form.value).subscribe(
       () => this.router.navigate(['carros-list']),
-      () =>
-        this.messageService.error(`Erro ao salvar o carro ${nome}`, () =>
+      (err) =>
+        this.messageService.error(`Erro ao salvar o carro: ${err.error.erro}`, () =>
           this.salvar()
         )
     );

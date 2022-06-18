@@ -97,7 +97,7 @@ export class VendedoresListPage
       () => {
         this.listVendedores("");
       },
-      () => this.messageService.error('Erro ao excluir o vendedor', () => this.remove(vendedor))
+      (err) => this.messageService.error(`Erro ao excluir o vendedor: ${err.error.erro}`, () => this.remove(vendedor))
     );
   }
 

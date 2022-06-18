@@ -89,8 +89,8 @@ export class VendedoresRegisterPage
 
     this.vendedoresApiService.save(this.form.value).subscribe(
       () => this.router.navigate(['vendedores-list']),
-      () =>
-        this.messageService.error(`Erro ao salvar o vendedor ${nome}`, () =>
+      (err) =>
+        this.messageService.error(`Erro ao salvar o vendedor: ${err.error.erro}`, () =>
           this.salvar()
         )
     );
