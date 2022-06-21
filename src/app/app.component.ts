@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public menus = [
-    { title: 'Login', url: '/login', icon: 'log-in' },
     { title: 'Carros', url: '/carros-list', icon: 'list' },
     { title: 'Vendedores', url: '/vendedores-list', icon: 'list' },
     { title: 'Compras', url: '/compras-list', icon: 'list' },
