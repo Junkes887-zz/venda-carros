@@ -119,8 +119,8 @@ export class ComprasRegisterPage
   salvar() {
     this.comprasApiService.save(this.form.value).subscribe(
       () => this.router.navigate(['compras-list']),
-      () =>
-        this.messageService.error(`Erro ao salvar compra`, () =>
+      (e) =>
+        this.messageService.error(`Erro ao salvar compra: ${e.error.erro}`, () =>
           this.salvar()
         )
     );
