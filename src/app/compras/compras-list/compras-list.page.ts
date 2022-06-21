@@ -93,7 +93,7 @@ export class ComprasListPage
       () => {
         this.listCompras();
       },
-      () => this.messageService.error('Erro ao excluir o compra', () => this.remove(compra))
+      (e) => this.messageService.error(`Erro ao excluir a compra: ${e.error.erro}`, () => this.remove(compra))
     );
   }
 
